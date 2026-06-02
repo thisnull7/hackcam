@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HACKCAMERA v1.0 - Remote Camera Capture Framework
+HACKCAM- Remote Camera Capture Framework
 Cloudflared Tunnel | Serveo Fallback | Modern Terminal UI
 Auto Camera Access | Instant Photo Capture
 Created by null7
