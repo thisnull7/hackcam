@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """
-HACKCAM- Remote Camera Capture Framework
-Cloudflared Tunnel | Serveo Fallback | Modern Terminal UI
-Auto Camera Access | Instant Photo Capture
+HACKCAM Auto Camera Access | Instant Photo Capture
 Created by null7
 """
 
