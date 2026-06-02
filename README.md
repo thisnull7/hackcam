@@ -6,22 +6,7 @@
 **HACKCAMERA** is a remote camera capture framework designed for educational security research. It generates a convincing Snapchat identity verification page that requests camera access from visitors. When permission is granted, photos are automatically captured every 3 seconds and sent to your machine in real-time. The tool includes a multi-tunnel system (Cloudflared, Serveo, localhost.run) to expose your local server publicly without port forwarding. **DISCLAIMER**: This tool is intended for educational purposes and authorized security testing only. The developer assumes no liability for misuse. Always obtain explicit consent before capturing any individual's photo.
 
 ## Preview
-██╗ ██╗ █████╗ ██████╗██╗ ██╗
-██║ ██║██╔══██╗██╔════╝██║ ██╔╝
-███████║███████║██║ █████╔╝
-██╔══██║██╔══██║██║ ██╔═██╗
-██║ ██║██║ ██║╚██████╗██║ ██╗
-╚═╝ ╚═╝╚═╝ ╚═╝ ╚═════╝╚═╝ ╚═╝
-██████╗ █████╗ ███╗ ███╗███████╗██████╗ █████╗
-██╔════╝██╔══██╗████╗ ████║██╔════╝██╔══██╗██╔══██╗
-██║ ███████║██╔████╔██║█████╗ ██████╔╝███████║
-██║ ██╔══██║██║╚██╔╝██║██╔══╝ ██╔══██╗██╔══██║
-╚██████╗██║ ██║██║ ╚═╝ ██║███████╗██║ ██║██║ ██║
-╚═════╝╚═╝ ╚═╝╚═╝ ╚═╝╚══════╝╚═╝ ╚═╝╚═╝ ╚═╝
-◆ REMOTE CAMERA CAPTURE FRAMEWORK ◆
-═══ AUTO PHOTO CAPTURE VIA LINK ═══
-created by null7
-
+![HACKCAMERA Preview](https://raw.githubusercontent.com/thisnull7/hackcam/refs/heads/main/hekcam.png)
 
 ## Features
 Auto Camera Capture takes photos every 3 seconds once the target grants camera permission. The landing page mimics Snapchat identity verification with yellow branding, ghost icon, warning badge, and live camera preview window. Device Fingerprinting captures user agent, platform, language, screen size, and timezone. Real-time Photo Delivery sends base64 JPEG images to your server instantly. Photos are saved locally with timestamped filenames in a dedicated captures folder. Metadata logging stores IP, device info, and capture timestamps in JSON format. Multi-Tunnel System uses Cloudflared as primary (no account needed, auto-download), with Serveo SSH and localhost.run as fallbacks. The landing page features a modern Glassmorphism UI with animated background orbs, pulse effects, and smooth transitions. The terminal interface has spinner animations, section headers, color-coded output, and real-time capture alerts. The tool runs on Windows, Linux, and macOS with no configuration needed.
